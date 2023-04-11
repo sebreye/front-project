@@ -1,3 +1,68 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.swiper{
+  height: 600px;
+  background-color: #f5f6f8;
+  margin: 2%;
+}
+
+.swiper-slide{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.swiper img{
+  width: 370px;
+  height: 480px;
+}
+
+.swiper-slide.swiper-slide-active{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.swiper button{
+  background-color: #4e836f;
+  color: white;
+  border-radius: 3px;
+  width: 130px;
+  height: 45px;
+  background: linear-gradient(to left, #4e836f 50%, #395348 50%) right;
+  background-size: 200%;
+  transition: 1s ease-out;
+}
+
+.swiper h2{
+  color: #4e836f;
+  font-weight: 600;
+  margin-bottom: 5%;
+  font-size: 20px;
+}
+
+.swiper h1{
+  color: #293e4d;
+  font-weight: bolder;
+  font-size: 60px;
+}
+.swiper p{
+  margin-bottom: 5%;
+
+}
+
+.relative .card {
+  position: absolute;
+  bottom: -50px;
+  left: 50%;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+.relative:hover .card {
+  bottom: 20px;
+  opacity: 1;
+}

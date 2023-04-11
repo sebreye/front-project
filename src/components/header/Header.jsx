@@ -18,16 +18,16 @@ const Header = () => {
     const [sideRight, setSideRight] = useState('-right-[100%] hidden')
 
     const swip = () => {
-        setSide('left-0')
+        setSide('left-0 z-50')
     }
     const swipPanier = () =>{
-        setSideRight('right-0')
+        setSideRight('right-0 z-50')
     }
     const croix = () =>{
-        setSide('-left-[100%]')
+        setSide('-left-[100%] ')
     }
     const croixPanier = () =>{
-        setSideRight('-right-[100%] hidden')
+        setSideRight('-right-[100%] hidden ')
     }
     const [query, setQuery] = useState("")
     const router = useRouter();
@@ -58,7 +58,7 @@ const Header = () => {
             <div className={`absolute top-0 ${sideRight} duration-300 ease-in-out h-screen border bg-white`} style={{width: 300}}>
                 <div className='flex justify-between'>
                     <h1 className='text-3xl mx-auto '>
-                        panier
+                        Fav Item
                     </h1>
                     <ImCross className='cursor-pointer' onClick={croixPanier}/>
                 </div>
