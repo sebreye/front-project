@@ -4,7 +4,7 @@ import {HiMagnifyingGlass} from 'react-icons/hi2'
 import Link from 'next/link'
 import {ImPhone} from 'react-icons/im'
 import {ImCross} from 'react-icons/im'
-import {AiFillShopping} from 'react-icons/ai'
+import {AiFillHeart} from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeTask } from '@component/redux/reducers/bookslice'
 import { useRouter } from 'next/router'
@@ -36,8 +36,8 @@ const Header = () => {
     <>
         <div className='flex justify-between p-6 shadow-lg'>
             <div>
-                <h1  className='text-3xl flex'><CgMenuLeft className='cursor cursor-pointer' onClick={swip}/>
-                BookShelf.</h1>
+                <h1  className='text-4xl flex cursor-pointer title'><CgMenuLeft className='cursor cursor-pointer' onClick={swip}/>
+                <Link href={'/'}>BookShelf.</Link></h1>
             </div>
             
             {showSearchBar && (
@@ -45,7 +45,7 @@ const Header = () => {
                         <h2 className='text-xl p-4'>
                             <HiMagnifyingGlass />
                         </h2>
-                        <input type="text" placeholder='search a book ' className='bg-gray-400' style={{ width: 300, height: 50, borderRadius: '20px' }} />
+                        <input type="text" placeholder='search a book ' className='bg-gray-200' style={{ width: 300, height: 50, borderRadius: '20px' }} />
                     </div>
                 )}
             <div className='flex p-4'>
@@ -53,17 +53,17 @@ const Header = () => {
                     <ImPhone/>
                 </span>
                 <p>01234567890</p>
-                <AiFillShopping className='mx-4 text-2xl cursor-pointer' onClick={swipPanier} />
+                <AiFillHeart className='mx-4 text-2xl cursor-pointer' onClick={swipPanier} />
             </div>
             <div className={`absolute top-0 ${sideRight} duration-300 ease-in-out h-screen border bg-white`} style={{width: 300}}>
                 <div className='flex justify-between'>
-                    <h1 className='text-3xl mx-auto '>
+                    <h1 className='text-3xl mx-auto title '>
                         Fav Item
                     </h1>
                     <ImCross className='cursor-pointer' onClick={croixPanier}/>
                 </div>
                 <div className='flex justify-center m-5'>
-                    <div className='w-[200px] relative h-[2px] mb-[50px] bg-green-400'><div className='h-[15px] absolute -top-2 left-[50%] w-[15px] bg-green-400 rotate-45'></div><div className='h-[15px] absolute -top-2 left-[45%] w-[15px] bg-green-400 rotate-45'></div></div>
+                    <div className='w-[200px] relative h-[2px] mb-[50px] bg-green-400/50'><div className='h-[15px] absolute -top-2 left-[50%] w-[15px] bg-green-400/40 rotate-45'></div><div className='h-[15px] absolute -top-2 left-[45%] w-[15px] bg-green-400/40 rotate-45'></div></div>
                 </div>
                 <div>
                     {favbooks.map(favbook =>(
@@ -79,16 +79,16 @@ const Header = () => {
             </div>
             <div className= {`absolute top-0 ${side} w-20 duration-300 ease-in-out h-screen left bg-white border`} style={{width: 300}}>
                 <div className='flex justify-between p-5 bg-gray-400 border'>
-                    <h1 className='text-3xl'>
+                    <h1 className='text-3xl title'>
                         Menu
                     </h1>
                     <ImCross className='m-3 cursor-pointer' onClick={croix}/>
                 </div>
                 <div>
-                    <h3 className='text-2xl p-4 cursor-pointer'>Bookshelf Minimal</h3>
-                    <h3 className='text-2xl p-4 cursor-pointer'>Bookshelf Modern</h3>
-                    <h3 className='text-2xl p-4 cursor-pointer'>Bookshelf Classic</h3>
-                    <h3 className='text-2xl p-4 cursor-pointer'><Link href={"/allbooks"}>All Books</Link></h3>
+                    <h3 className='text-2xl p-4 cursor-pointer hover:text-green-500 hover:underline'>Bookshelf Minimal</h3>
+                    <h3 className='text-2xl p-4 cursor-pointer hover:text-green-500 hover:underline'>Bookshelf Modern</h3>
+                    <h3 className='text-2xl p-4 cursor-pointer hover:text-green-500 hover:underline'>Bookshelf Classic</h3>
+                    <h3 className='text-2xl p-4 cursor-pointer hover:text-green-500 hover:underline'><Link href={"/allbooks"}>All Books</Link></h3>
                 </div>
             </div>
         </div>

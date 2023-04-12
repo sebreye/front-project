@@ -66,3 +66,20 @@
   bottom: 20px;
   opacity: 1;
 }
+.zoom:hover img{
+  scale: 1.5;
+  
+}
+.zoom{
+  overflow: hidden;
+}
+.shadino{
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+@font-face{
+  font-family: 'wave';
+  src: url("../font/Philosopher-Regular.ttf");
+}
+.title{
+  font-family: 'wave';
+}

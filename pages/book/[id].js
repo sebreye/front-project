@@ -13,12 +13,42 @@ const BookDetailsPage = () => {
   }, [router.query]);
 
   return (
+    <>
+    <div className='flex flex-col justify-center mx-auto m-14 p-6 border border-green-400/40 shadino' style={{width: 1050}}>
     <div>
-      <h1>{book.title}</h1>
-      <p>By {book.authors}</p>
-      <img src={book.image_url} alt="" width={250} height={250} className='mx-auto' style={{objectFit: 'cover'}} />
-      <p>{book.description}</p>
+          <div>
+          <h1 className='text-3xl text-center font-bold'>{book.title}</h1>
+          <p className='text-center'>By {book.authors}</p>
+          <div className='flex justify-center mt-5'>
+                    <div className='w-[200px] relative h-[2px] mb-[50px] bg-green-400/50'><div className='h-[15px] absolute -top-2 left-[50%] w-[15px] bg-green-400/40 rotate-45'></div><div className='h-[15px] absolute -top-2 left-[45%] w-[15px] bg-green-400/40 rotate-45'></div></div>
+                </div>
+          </div>
+      
+        </div>
+    <div className='flex justify-between '>
+      <div style={{width: 350}}>
+      <img src={book.image_url} alt=""  className='h-[550px] w-full border border-green-400 mx-auto shadino' style={{objectFit: 'cover'}} />
+      </div>
+      <div className='flex flex-col justify-center'>
+        <div className='p-5'>
+          <h1 className='text-3xl font-bold'>Notes: </h1>
+          <p className='text-2xl'>{book.rating}/5</p>
+        </div>
+        <div className='p-5' style={{width: 650}}>
+        <h1 className='text-3xl font-bold'>Description:</h1>
+        <p>{book.description}</p>
+        </div>
+        <div className='p-5'>
+          <p className='text-xl font-bold'>{book.num_pages} pages</p>
+        </div>
+      </div>
+      
+      
     </div>
+    </div>
+    
+    </>
+    
   );
 };
 
