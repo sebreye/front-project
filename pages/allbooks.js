@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {AiOutlineFullscreen, AiFillHeart} from 'react-icons/ai'
-import { addTask } from '@component/redux/reducers/bookslice';
+import { addTask,  toggleFavorite } from '@component/redux/reducers/bookslice';
+import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 const AllBooksPage = () => {
     const [books, setBooks] = useState([]);
-    const [query, setQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
     const [sortOrder, setSortOrder] = useState("asc");
     const dispatch = useDispatch()
@@ -13,8 +13,7 @@ const AllBooksPage = () => {
     const [loading, setLoading] = useState(true);
     const [selectedAuthor, setSelectedAuthor] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
-    const [favorites, setFavorites] = useState([]);
-
+    const favorites = useSelector((state => state.booklist.favorites))
 
     useEffect(() => {
         fetch("https://example-data.draftbit.com/books")
@@ -76,16 +75,17 @@ const AllBooksPage = () => {
         .filter((author, index, self) => self.indexOf(author) === index);
 
         const AddFavs = (book) => {
-            dispatch(addTask(book))
-            setFavorites([...favorites, book]);
-        };
+            dispatch(addTask(book));
+            dispatch(toggleFavorite(book.id));
+        }
+        
         const DetailBook = (book) => {
             router.push(`/book/${book.id}`)
         }   
         
     return (
     <div className='allbooks flex '>
-        <div className='allfiltre my-16 py-10 ' style={{width: 320}}>
+        <div className='allfiltre my-16 py-10 w-[320px] ' >
         <div className="allsearch flex mb-4">
             <input
             type="text"
@@ -95,7 +95,7 @@ const AllBooksPage = () => {
             className=' rounded-full w-3/4 hover:border-green-400 focus:border-none focus:ring focus:ring-green-300 bg-gray-200 border-white'
             />
         </div>
-        <div>
+        <div className='sect-filtre'>
         <div className='categ-sect'>
         <h1 className='text-3xl title'>Category</h1>
             <select value={selectedCategory} onChange={handleCategoryChange} className='rounded-full w-3/4 hover:border-green-400 focus:border-none focus:ring focus:ring-green-300'>
@@ -128,15 +128,15 @@ const AllBooksPage = () => {
         <button className='btn-tri border border-white rounded-full w-1/6 bg-green-400 text-white' onClick={handleSortOrderChange}>trier par A-Z</button>
         </div>
         <div className='ttlivres grid gap-y-5 grid-cols-4 w-[1250px]' >
-            {filteredBooks.map((book) => (
-                    <div className='relative'>
-                    <div key={book.id} className='relative border border-green-400 rounded-lg front shadino m-4' style={{ width: 300,  margin: 'auto'}}>
+            {loading ? <h1 className="text-center">Chargement en cours...</h1> : filteredBooks.map((book) => (
+                    <div className='divbook relative'>
+                    <div key={book.id} className=' relative border border-green-400 rounded-lg front shadino m-4' style={{ width: 300,  margin: 'auto'}}>
                         <img src={book.image_url} alt=""  className='h-[400px] w-full rounded-lg' style={{objectFit: 'cover'}} />
                         <div className='flex flex-col place-items-center' style={{height: 120}}>
                             <h2 className='text-xl title'>{book.title}</h2>
                             <p>By {book.authors}</p>
                             <div className='card'>
-                                <button className='bg-green-400 rounded-lg m-1 coeur' onClick={() => AddFavs(book)} disabled={favorites.includes(book)} style={{width: 120, height: 45}}>{favorites.includes(book) ? 'ajouté' : 'add to favoris'}</button>
+                                {favorites.includes(book.id) ?<button className='bg-green-400 rounded-lg m-1 coeur'style={{width: 120, height: 45}}>dans vos favoris</button> : <button className='bg-green-400 rounded-lg m-1 coeur' onClick={() => AddFavs(book)} style={{width: 120, height: 45}}>add to favoris</button>}   
                             </div>
                         </div>
                     </div>
@@ -148,6 +148,7 @@ const AllBooksPage = () => {
                     </div>
             </div>
             ))}
+        
 
             </div>
             </div>

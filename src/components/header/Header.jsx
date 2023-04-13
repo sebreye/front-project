@@ -9,14 +9,24 @@ import { useDispatch, useSelector } from 'react-redux'
 import { removeTask } from '@component/redux/reducers/bookslice'
 import { useRouter } from 'next/router'
 import {FaUserAlt} from 'react-icons/fa'
+import { toggleFavorite } from '@component/redux/reducers/bookslice'
 const Header = () => {
-    const favbooks = useSelector(state => state.booklist.panier)
+    const favoriteIds = useSelector(state => state.booklist.favorites);
+    const books = useSelector(state => state.booklist.books);
     const dispatch = useDispatch()
     const SuppFavs = (favbook) =>{
         dispatch(removeTask(favbook))
     }
     const [side, setSide] = useState('-left-[100%] ')
     const [sideRight, setSideRight] = useState('-right-[100%] hidden')
+    const favoriteBooks = favoriteIds.map(favoriteId =>
+        books.find(book => book.id === favoriteId)
+    );
+    const handleRemoveFavorite = (bookId) => {
+        dispatch(toggleFavorite(bookId)); 
+      }
+    
+    
 
     const swip = () => {
         setSide('left-0 z-50')
@@ -36,7 +46,7 @@ const Header = () => {
   return (
     <>
         <div className='flex justify-between p-6 shadow-lg'>
-            <div>
+            <div className='bookshelf'>
                 <h1  className='text-4xl flex cursor-pointer title'><CgMenuLeft className='cursor cursor-pointer' onClick={swip}/>
                 <Link href={'/'}>BOOKSHELF.</Link></h1>
             </div>
@@ -49,7 +59,7 @@ const Header = () => {
                         <input type="text" placeholder='search a book ' className='bg-gray-200 search' style={{ width: 300, height: 50, borderRadius: '20px' }} />
                     </div>
                 )}
-            <div className='flex p-4'>
+            <div className='logo flex p-4'>
                 <span className='text-2xl'>
                     <ImPhone/>
                 </span>
@@ -69,15 +79,14 @@ const Header = () => {
                     <div className='w-[200px] relative h-[2px] mb-[50px] bg-green-400/50'><div className='h-[15px] absolute -top-2 left-[50%] w-[15px] bg-green-400/40 rotate-45'></div><div className='h-[15px] absolute -top-2 left-[45%] w-[15px] bg-green-400/40 rotate-45'></div></div>
                 </div>
                 <div>
-                    {favbooks.map(favbook =>(
-                        <div key={favbook.id} className='flex'>
-                            <img src={favbook.image_url}
-                            alt="" width={50} />
-                            <p>{favbook.title}</p>
-                            <ImCross className='cursor-pointer' onClick={() => SuppFavs(favbook)}/>
-                            
-                        </div>
-                    ))}
+                {favoriteBooks.map(favoriteBook => (
+        <div key={favoriteBook.id} className='flex'>
+          <img src={favoriteBook.image_url} alt={favoriteBook.title} width={50} />
+          <h3>{favoriteBook.title}</h3>
+          <p>{favoriteBook.author}</p>
+          <ImCross className='cursor-pointer'onClick={() => handleRemoveFavorite(favoriteBook.id)}/>
+        </div>
+      ))}
                 </div>
             </div>
             <div className= {`absolute top-0 ${side} w-20 duration-300 ease-in-out h-screen left bg-white border`} style={{width: 300}}>

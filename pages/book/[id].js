@@ -23,10 +23,9 @@ const BookDetailsPage = () => {
                     <div className='w-[200px] relative h-[2px] mb-[50px] bg-green-400/50'><div className='h-[15px] absolute -top-2 left-[50%] w-[15px] bg-green-400/40 rotate-45'></div><div className='h-[15px] absolute -top-2 left-[45%] w-[15px] bg-green-400/40 rotate-45'></div></div>
                 </div>
           </div>
-      
-        </div>
+      </div>
     <div className='detailsbook flex justify-between '>
-      <div className='w-[350px]'>
+      <div className='detailimg w-[350px]'>
       <img src={book.image_url} alt=""  className='h-[550px] w-full border border-green-400 mx-auto shadino' style={{objectFit: 'cover'}} />
       </div>
       <div className='flex flex-col justify-center'>

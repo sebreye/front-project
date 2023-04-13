@@ -149,9 +149,19 @@
 .title{
   font-family: 'wave';
 }
-@media screen and (max-width: 376px) { 
+@media only screen and (max-width: 376px) { 
+  .bookshelf{
+    margin: auto;
+  }
   .text-loupe{
     padding: 0;
+  }
+  .logo{
+    display: flex;
+    flex-direction: column;
+  }
+  .logo svg{
+    margin: 0;
   }
   .loupe{
     display: none;
@@ -166,6 +176,7 @@
     display: flex;
     flex-direction: column;
     margin: 0;
+
   }
   .card-flex{
     width: 100%;
@@ -251,7 +262,7 @@
     padding: 0;
   }
 }
-@media screen and (max-width: 426px){
+@media  screen and (max-width: 426px){
   .text-loupe{
     padding: 0;
   }
@@ -269,17 +280,18 @@
     flex-direction: column;
     margin: 0;
   }
+.divcards{
+  width: 100%;
+}
   .card-flex{
     width: 100%;
-    margin: auto;
-    margin-top: 5px;
   }
   .card-flex .divimg{
     width: 80%;
   }
   .popbook{
-    gap: 5;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    display: flex;
+    flex-direction: column;
   }
   .lastsection{
     width: 100%;
@@ -381,8 +393,8 @@
     width: 35%;
   }
   .ttlivres{
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
   /* page details livres */
   .alldetails{
@@ -424,5 +436,101 @@
   }
   .qrcodesect img{
     width: 25%;
+  }
+}
+@media screen and (max-width: 768px){
+  .info-sales{
+    width: 90%;
+    height: 50%;
+    margin: auto;
+  }
+  .text-sales{
+    padding: 25px;
+  }
+  .card-flex{
+    width: 50%;
+    height: 50%;
+  }
+  .popbook{
+    gap: 5;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .alllastsection{
+    width: 90%;
+    height: 50%;
+    margin: auto;
+  }
+  .lastsection{
+    width: 100%;
+    height: 50%;
+  }
+  .imgdiv{
+    width: 45%;
+  }
+  .imgdiv img{
+    width: 100%;
+  }
+  .joinsection{
+    padding-right: 15px;
+    width: 55%;
+  }
+  .lisection{
+    width: 40px;
+    height: 40px;
+  }
+  .lisection svg{
+    margin-left: 8px;
+    margin-top: 8px;
+  }
+  /* allbooks page */
+  .allbooks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .allfiltre{
+    width: 80%;
+    margin: auto;
+  }
+  .allsearch{
+    display: flex;
+    justify-content: center;
+  }
+  .sect-filtre{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .categ-sect{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .author-sect{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ttlivres{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+  .divbook{
+    margin: 10px;
+  }
+  .number{
+    display: none;
+  }
+  .alldetails{
+    width: 100%;
+  }
+  .detailsbook{
+    display: flex;
+    flex-direction: column;
+  }
+  .detailimg{
+    margin: auto;
   }
 }

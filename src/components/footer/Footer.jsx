@@ -6,7 +6,7 @@ const Footer = () => {
     <>
         <footer className='footer bg-blue-950 pt-12 px-20'>
             <div className='footersection flex justify-around mx-5'>
-                <div className='bookinfosectflex p-8'>
+                <div className='bookinfosect flex p-8'>
                     <ImBook className='logobookinfo text-green-500 text-2xl m-1 '/>
                     <div className='parabookinfo'>
                         <h2 className='text-2xl text-white'>Book's Information</h2>

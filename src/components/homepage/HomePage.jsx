@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTask } from '@component/redux/reducers/bookslice';
+import { addTask,  toggleFavorite } from '@component/redux/reducers/bookslice';
 import { useRouter } from 'next/router';
 import {AiOutlineFullscreen, AiFillHeart} from 'react-icons/ai'
 import {FaShoppingCart} from 'react-icons/fa'
 import { Swiper, SwiperSlide } from "swiper/react";
 import {BsFacebook, BsTwitter, BsTwitch} from 'react-icons/bs'
-import {AiFillInstagram} from 'react-icons/ai'
-
+import {AiFillInstagram} from 'react-icons/ai';
+import { useSelector } from 'react-redux';
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
@@ -15,6 +15,7 @@ const HomePage = () => {
     const [books, setBooks] = useState([]);
     const dispatch = useDispatch()
     const router = useRouter()
+    const favorites = useSelector((state => state.booklist.favorites))
     useEffect(() => {
         fetch('https://example-data.draftbit.com/books')
             .then(response => response.json())
@@ -28,9 +29,10 @@ const HomePage = () => {
         .then(response => response.json())
         .then(data => setBooks([...books, ...data.slice(currentLength, nextSix)]));
 };
-    const AddFavs = (book) => {
-        dispatch(addTask(book))
-    };
+const AddFavs = (book) => {
+    dispatch(addTask(book))
+    dispatch(toggleFavorite(book.id));
+}
     const DetailBook = (book) => {
         router.push(`/book/${book.id}`)
     }
@@ -95,21 +97,24 @@ const HomePage = () => {
         </Swiper>
     </>
     <div className='flex justify-center m-8 info-sales'>
-    <div className=' card-flex flex rounded-md  m-2 shadow-xl shadino w-2/5 '>
+    <div className='card-flex flex rounded-md  m-2 shadow-xl shadino w-2/5 '>
+        <div className='divcards flex'>
         <div  className=' divimg w-1/2 zoom'>
             <img src="https://img.freepik.com/free-psd/book-cover-mockup-psd-editable-design_53876-145076.jpg?size=626&ext=jpg" alt="" className='h-full duration-300 rounded-md'  />
         </div>
-        <div className='p-10'>
+        <div className='text-sales p-10'>
             <p className='text-xl text-emerald-700'>SALE UP TO 15% </p>
             <p className='text-lg bold'>Innovation in Education </p>
             <p className='text-lg bold'>Starting at: $65.09</p>
         </div>
+        </div>
+        
     </div>
-    <div className=' card-flex flex rounded-md  m-2 shadow-xl shadino w-2/5 ' >
+    <div className='card-flex flex rounded-md  m-2 shadow-xl shadino w-2/5 ' >
         <div className='divimg w-1/2 zoom '>
             <img src="https://img.freepik.com/premium-psd/front-view-two-hard-cover-book-mockup_1150-37607.jpg?size=626&ext=jpg" alt="" className='h-full duration-300 rounded-md'  />
         </div>
-        <div className='p-10'>
+        <div className='text-sales p-10'>
         <p className='text-xl text-emerald-700'>SALE UP TO 15% </p>
             <p className='text-lg bold'>Innovation in Education </p>
             <p className='text-lg bold'>Starting at: $65.09</p>
@@ -132,12 +137,12 @@ const HomePage = () => {
                                 <h2 className='text-xl font-bold title'>{book.title}</h2>
                                 <p>By {book.authors}</p>
                                 <div className='card'>
-                                <button className='bg-green-400 rounded-lg m-1 coeur' onClick={() => AddFavs(book)} style={{width: 120, height: 45}}>add to favoris</button>
+                                {favorites.includes(book.id) ?<button className='bg-green-400 rounded-lg m-1 coeur'style={{width: 120, height: 45}}>dans vos favoris</button> : <button className='bg-green-400 rounded-lg m-1 coeur' onClick={() => AddFavs(book)} style={{width: 120, height: 45}}>add to favoris</button>}   
                                 </div>
                                 
                             </div>
                         </div>
-                        <div className='flex items-end flex-col absolute left-12 top-0 opacity-0 hover:opacity-100  'style={{width: 300,height: 350, margin: 'auto' }}>
+                        <div className='flex items-end flex-col absolute left-12 top-0 opacity-0 hover:opacity-100  'style={{width: 300,height: 250, margin: 'auto' }}>
                                 <button className='bg-green-400 text-center  m-1' onClick={() => DetailBook(book)} style={{width: 30, height: 30, borderRadius: '50%'}}><AiOutlineFullscreen className='mx-auto'/></button>
                                 <button className='bg-green-400 text-center  m-1' style={{width: 30, height: 30, borderRadius: '50%'}}>
                                 <AiFillHeart className='mx-auto'/>
@@ -150,8 +155,8 @@ const HomePage = () => {
             </div>
                 {books.length < 17 && <button className='flex justify-center mx-auto m-4 bg-green-400 items-center rounded-full' style={{width: 150, height: 50}} onClick={loadMore}>Load More</button>}
         </div>
-        <div className='flex justify-center p-3' >
-        <div className=' lastsection flex rounded-md  shadow-2xl shadino w-3/5 '  >
+        <div className='alllastsection flex justify-center p-3' >
+        <div className='lastsection flex rounded-md  shadow-2xl shadino w-3/5 '  >
                 <div className='imgdiv p-4 w-3/5' >
                     <img src="https://img.freepik.com/free-psd/book-cover-mockup-psd-editable-design_53876-145076.jpg?size=626&ext=jpg" alt="" className='rounded-lg w-full' />
                 </div>
@@ -164,10 +169,10 @@ const HomePage = () => {
                     </div>
                     <div>
                         <ul className='flex'>
-                            <li className='lisection bg-green-400 hover:bg-green-800 cursor-pointer m-2 rounded-full text-center ' ><BsTwitter className='text-white text-2xl  ' /></li>
-                            <li className='lisection bg-green-400 hover:bg-green-800 cursor-pointer m-2 rounded-full text-center ' ><BsFacebook className='text-white text-2xl  ' /></li>
-                            <li className='lisection bg-green-400 hover:bg-green-800 cursor-pointer m-2 rounded-full text-center ' ><AiFillInstagram className='text-white text-2xl  ' /></li>
-                            <li className='lisection bg-green-400 hover:bg-green-800 cursor-pointer m-2 rounded-full text-center  '><BsTwitch className='text-white text-2xl  ' /></li>
+                            <li className='lisection bg-green-400 hover:bg-green-800 cursor-pointer m-2 rounded-full text-center ' ><BsTwitter className='text-white text-2xl ml-3 mt-3  ' /></li>
+                            <li className='lisection bg-green-400 hover:bg-green-800 cursor-pointer m-2 rounded-full text-center ' ><BsFacebook className='text-white text-2xl ml-3 mt-3  ' /></li>
+                            <li className='lisection bg-green-400 hover:bg-green-800 cursor-pointer m-2 rounded-full text-center ' ><AiFillInstagram className='text-white text-2xl ml-3 mt-3  ' /></li>
+                            <li className='lisection bg-green-400 hover:bg-green-800 cursor-pointer m-2 rounded-full text-center  '><BsTwitch className='text-white text-2xl ml-3 mt-3  ' /></li>
                         </ul>
                     </div>
                 </div>

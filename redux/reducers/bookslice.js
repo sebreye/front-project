@@ -1,27 +1,32 @@
-import { createSlice } from "@reduxjs/toolkit";
 
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {
+    books: [],
+    favorites: []
+};
 export const bookSlice = createSlice({
-    name: 'books',
-    initialState:{
-        panier: [],
-        idCounter: 0,
+    name: 'bookslice',
+    initialState,
+    reducers: {
+        addTask(state, action) {
+            const book = action.payload;
+            state.books.push(book);
     },
-    reducers : {
-        addTask: (state, action) => {
-            const books = { ...action.payload, id: state.idCounter };
-            state.panier.push(books);
-            state.idCounter++;
-            console.log(state.panier);
-        },
-        removeTask: (state, action) => {
-            const index = state.panier.findIndex(snk => snk.id === action.payload.id);
-            if (index !== -1) {
-                const bookToRemove = state.panier[index];
-                state.panier.splice(index, 1);
-                state.Pprice -= bookToRemove.prix; 
-            }
-        },
-    }
-})
+    toggleFavorite(state, action) {
+        const bookId = action.payload;
+        const book = state.books.find((book) => book.id === bookId);
 
-export const {addTask, removeTask} = bookSlice.actions
+        if (book) {
+            if (state.favorites.includes(bookId)) {
+            state.favorites = state.favorites.filter((id) => id !== bookId);
+        } else {
+            state.favorites.push(bookId);
+        }
+    }
+    },
+    },
+});
+
+export const { addTask, toggleFavorite } = bookSlice.actions;
+
