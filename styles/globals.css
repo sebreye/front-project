@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.body{
+  font-family: 'roboto';
+}
 .swiper{
   height: 600px;
   background-color: #f5f6f8;
@@ -76,10 +79,276 @@
 .shadino{
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
+.lisection{
+  width: 50px;
+  height: 50px;
+}
 @font-face{
   font-family: 'wave';
   src: url("../font/Philosopher-Regular.ttf");
 }
+@font-face{
+  font-family: 'roboto';
+  src: url("../font/Roboto-Regular.ttf");
+}
 .title{
   font-family: 'wave';
+}
+@media screen and (max-width: 376px) { 
+  .text-loupe{
+    padding: 0;
+  }
+  .loupe{
+    display: none;
+  }
+  .search{
+    display: none;
+  }
+  .number{
+    display: none;
+  }
+  .info-sales{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  .card-flex{
+    width: 100%;
+    margin: auto;
+    margin-top: 5px;
+  }
+  .card-flex .divimg{
+    width: 80%;
+  }
+  .popbook{
+    gap: 5;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .lastsection{
+    width: 100%;
+  }
+  .imgdiv{
+    width: 50%;
+    
+  }
+  .imgdiv img{
+    width: 100%;
+    height: 100%;
+  }
+
+  .emailsection{
+    margin: auto;
+  }
+  .inputsection{
+    width: 250%;
+    height: 60%;
+    margin: auto;
+  }
+  .btnsection{
+    height: 60%;
+    margin: auto;
+  }
+  .lisection{
+    width: 35px;
+    height: 35px;
+  }
+  .lisection svg{
+    margin: auto;
+    margin-top: 3px;
+    padding-top: 3px;
+  }
+  .footersection{
+    display: flex;
+    flex-direction: column;
+  }
+  .bookinfosect{
+    display: contents;
+    
+  }
+  .logobookinfo{
+    margin: auto;
+  }
+  .parabookinfo{
+    text-align: center;
+  }
+  .helpinfo{
+    display: contents;
+    
+  }
+  .logohelp{
+    margin: auto;
+  }
+  .parahelp{
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .endfooter{
+    display: flex;
+    flex-direction: column;
+  }
+  .endfooter h1{
+    text-align: center;
+  }
+  .endfooter p{
+    text-align: center;
+  }
+  .footer{
+    padding: 0;
+  }
+}
+@media screen and (max-width: 426px){
+  .text-loupe{
+    padding: 0;
+  }
+  .loupe{
+    display: none;
+  }
+  .search{
+    display: none;
+  }
+  .number{
+    display: none;
+  }
+  .info-sales{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  .card-flex{
+    width: 100%;
+    margin: auto;
+    margin-top: 5px;
+  }
+  .card-flex .divimg{
+    width: 80%;
+  }
+  .popbook{
+    gap: 5;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .lastsection{
+    width: 100%;
+  }
+  .imgdiv{
+    width: 50%;
+    
+  }
+  .imgdiv img{
+    width: 100%;
+    height: 100%;
+  }
+
+  .emailsection{
+    margin: auto;
+  }
+  .inputsection{
+    width: 250%;
+    height: 60%;
+    margin: auto;
+  }
+  .btnsection{
+    height: 60%;
+    margin: auto;
+  }
+  .lisection{
+    width: 35px;
+    height: 35px;
+  }
+  .lisection svg{
+    margin: auto;
+    margin-top: 3px;
+    padding-top: 3px;
+  }
+  .footersection{
+    display: flex;
+    flex-direction: column;
+  }
+  .bookinfosect{
+    display: contents;
+    
+  }
+  .logobookinfo{
+    margin: auto;
+  }
+  .parabookinfo{
+    text-align: center;
+  }
+  .helpinfo{
+    display: contents;
+    
+  }
+  .logohelp{
+    margin: auto;
+  }
+  .parahelp{
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .endfooter{
+    display: flex;
+    flex-direction: column;
+  }
+  .endfooter h1{
+    text-align: center;
+  }
+  .endfooter p{
+    text-align: center;
+  }
+  .footer{
+    padding: 0;
+  }
+  /* page allbooks */
+  .allbooks{
+    display: flex;
+    flex-direction: column;
+  }
+  .allfiltre{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+  }
+  .allsearch{
+    display: flex;
+    justify-content: center;
+  }
+  .categ-sect{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .author-sect{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn-tri{
+    width: 35%;
+  }
+  .ttlivres{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    width: 100%;
+  }
+  /* page details livres */
+  .alldetails{
+    width: 100%;
+    margin: 0;
+  }
+  .detailsbook{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .notespara{
+    text-align: center;
+  }
+  .descpara{
+    text-align: center;
+    width: 100%
+  }
+  .pagespara{
+    text-align: center;
+  }
 }

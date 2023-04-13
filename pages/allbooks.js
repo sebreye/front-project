@@ -82,42 +82,50 @@ const AllBooksPage = () => {
         }   
         
     return (
-    <div className='flex '>
-        <div className=' my-16' style={{width: 350}}>
-        <div className="flex justify-center mb-4">
+    <div className='allbooks flex '>
+        <div className='allfiltre my-16 py-10 ' style={{width: 320}}>
+        <div className="allsearch flex mb-4">
             <input
             type="text"
-            placeholder="Search..."
+            placeholder="Search a Book Here"
             value={searchQuery}
             onChange={handleSearchChange}
+            className=' rounded-full w-3/4 hover:border-green-400 focus:border-none focus:ring focus:ring-green-300 bg-gray-200 border-white'
             />
         </div>
-            <h1 className='text-4xl'>Category</h1>
-            <select value={selectedCategory} onChange={handleCategoryChange}>
+        <div>
+        <div className='categ-sect'>
+        <h1 className='text-3xl title'>Category</h1>
+            <select value={selectedCategory} onChange={handleCategoryChange} className='rounded-full w-3/4 hover:border-green-400 focus:border-none focus:ring focus:ring-green-300'>
             <option value="">All</option>
             <option value="Fiction">Fiction</option>
             <option value="Psychology">Psychology</option>
             <option value="Mystery">Mystery</option>
             <option value="Fantasy">Fantasy</option>
             </select>
-                <h1 className='text-4xl'>Author</h1>
-                <div className="flex justify-center mb-4">
-            <label className="mr-2">Filtre par auteur:</label>
-            <select value={selectedAuthor} onChange={handleAuthorChange}>
-            <option value="">All</option>
-            {authors.map((author) => (
-                <option key={author} value={author}>
-                {author}
-                </option>
-            ))}
-            </select>
         </div>
+                <div className='author-sect'>
+                <h1 className='text-3xl title'>Author</h1>
+                
+                    <select value={selectedAuthor} onChange={handleAuthorChange} className='rounded-full w-3/4 hover:border-green-400 focus:border-none focus:ring focus:ring-green-300'>
+                        <option value="">All</option>
+                        {authors.map((author) => (
+                        <option key={author} value={author}>
+                        {author}
+                        </option>
+                    ))}
+                    </select>
+                
+                </div>
+        </div>
+        
+                
         </div>
         <div className='flex flex-col m-8'>
         <div className="flex justify-end mb-4">
-        <button className='border' onClick={handleSortOrderChange}>trier par A-Z</button>
+        <button className='btn-tri border border-white rounded-full w-1/6 bg-green-400 text-white' onClick={handleSortOrderChange}>trier par A-Z</button>
         </div>
-        <div className='grid gap-y-5 grid-cols-4 ' style={{width: 1250}}>
+        <div className='ttlivres grid gap-y-5 grid-cols-4 w-[1250px]' >
             {filteredBooks.map((book) => (
                     <div className='relative'>
                     <div key={book.id} className='relative border border-green-400 rounded-lg front shadino m-4' style={{ width: 300,  margin: 'auto'}}>

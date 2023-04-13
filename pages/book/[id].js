@@ -14,7 +14,7 @@ const BookDetailsPage = () => {
 
   return (
     <>
-    <div className='flex flex-col justify-center mx-auto m-14 p-6 border border-green-400/40 shadino' style={{width: 1050}}>
+    <div className='alldetails flex flex-col justify-center mx-auto m-14 p-6 border border-green-400/40 shadino w-[1050px]' >
     <div>
           <div>
           <h1 className='text-3xl text-center font-bold'>{book.title}</h1>
@@ -25,20 +25,20 @@ const BookDetailsPage = () => {
           </div>
       
         </div>
-    <div className='flex justify-between '>
-      <div style={{width: 350}}>
+    <div className='detailsbook flex justify-between '>
+      <div className='w-[350px]'>
       <img src={book.image_url} alt=""  className='h-[550px] w-full border border-green-400 mx-auto shadino' style={{objectFit: 'cover'}} />
       </div>
       <div className='flex flex-col justify-center'>
-        <div className='p-5'>
+        <div className='notespara p-5'>
           <h1 className='text-3xl font-bold'>Notes: </h1>
           <p className='text-2xl'>{book.rating}/5</p>
         </div>
-        <div className='p-5' style={{width: 650}}>
+        <div className='descpara p-5 w-[650px]' >
         <h1 className='text-3xl font-bold'>Description:</h1>
         <p>{book.description}</p>
         </div>
-        <div className='p-5'>
+        <div className='pagespara p-5'>
           <p className='text-xl font-bold'>{book.num_pages} pages</p>
         </div>
       </div>

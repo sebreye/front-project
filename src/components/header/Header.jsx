@@ -8,6 +8,7 @@ import {AiFillHeart} from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeTask } from '@component/redux/reducers/bookslice'
 import { useRouter } from 'next/router'
+import {FaUserAlt} from 'react-icons/fa'
 const Header = () => {
     const favbooks = useSelector(state => state.booklist.panier)
     const dispatch = useDispatch()
@@ -37,23 +38,25 @@ const Header = () => {
         <div className='flex justify-between p-6 shadow-lg'>
             <div>
                 <h1  className='text-4xl flex cursor-pointer title'><CgMenuLeft className='cursor cursor-pointer' onClick={swip}/>
-                <Link href={'/'}>BookShelf.</Link></h1>
+                <Link href={'/'}>BOOKSHELF.</Link></h1>
             </div>
             
             {showSearchBar && (
                     <div className='flex'>
-                        <h2 className='text-xl p-4'>
-                            <HiMagnifyingGlass />
+                        <h2 className='text-xl p-4 text-loupe'>
+                            <HiMagnifyingGlass className='loupe' />
                         </h2>
-                        <input type="text" placeholder='search a book ' className='bg-gray-200' style={{ width: 300, height: 50, borderRadius: '20px' }} />
+                        <input type="text" placeholder='search a book ' className='bg-gray-200 search' style={{ width: 300, height: 50, borderRadius: '20px' }} />
                     </div>
                 )}
             <div className='flex p-4'>
                 <span className='text-2xl'>
                     <ImPhone/>
                 </span>
-                <p>01234567890</p>
+                <p className='number'>01234567890</p>
                 <AiFillHeart className='mx-4 text-2xl cursor-pointer' onClick={swipPanier} />
+                <Link href={'/connection'}><FaUserAlt className='mx-4 text-2xl cursor-pointer'/></Link>
+                
             </div>
             <div className={`absolute top-0 ${sideRight} duration-300 ease-in-out h-screen border bg-white`} style={{width: 300}}>
                 <div className='flex justify-between'>
@@ -80,7 +83,7 @@ const Header = () => {
             <div className= {`absolute top-0 ${side} w-20 duration-300 ease-in-out h-screen left bg-white border`} style={{width: 300}}>
                 <div className='flex justify-between p-5 bg-gray-400 border'>
                     <h1 className='text-3xl title'>
-                        Menu
+                        Bookshelf
                     </h1>
                     <ImCross className='m-3 cursor-pointer' onClick={croix}/>
                 </div>
