@@ -13,6 +13,7 @@ const AllBooksPage = () => {
     const [loading, setLoading] = useState(true);
     const [selectedAuthor, setSelectedAuthor] = useState("");
     const [searchQuery, setSearchQuery] = useState("");
+    const [favorites, setFavorites] = useState([]);
 
 
     useEffect(() => {
@@ -76,6 +77,7 @@ const AllBooksPage = () => {
 
         const AddFavs = (book) => {
             dispatch(addTask(book))
+            setFavorites([...favorites, book]);
         };
         const DetailBook = (book) => {
             router.push(`/book/${book.id}`)
@@ -134,7 +136,7 @@ const AllBooksPage = () => {
                             <h2 className='text-xl title'>{book.title}</h2>
                             <p>By {book.authors}</p>
                             <div className='card'>
-                                <button className='bg-green-400 rounded-lg m-1 coeur' onClick={() => AddFavs(book)} style={{width: 120, height: 45}}>add to favoris</button>
+                                <button className='bg-green-400 rounded-lg m-1 coeur' onClick={() => AddFavs(book)} disabled={favorites.includes(book)} style={{width: 120, height: 45}}>{favorites.includes(book) ? 'ajouté' : 'add to favoris'}</button>
                             </div>
                         </div>
                     </div>

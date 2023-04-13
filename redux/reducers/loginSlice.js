@@ -1,13 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const loginSlice = createSlice({
-    name: 'login',
+    name: 'subscribe',
     initialState: {
-        connected:false, users:[{name:'Client', email:'client@client.com', mdp:'1234'}], connectedUser:{}
+        email: '',
+        password: '',
+        isSubscribed: false,
     },
+    reducers: {
+    subscribe: (state, action) => {
+        state.email = action.payload.email;
+        state.password = action.payload.password;
+        state.isSubscribed = true;
+        },
+    },
+    });
+export const { subscribe } = loginSlice.actions;
     
-    reducers:{
-        setConected:(state, action)=>{state.connected = action.payload},
-        setUser:(state, action)=>{state.connectedUser = action.payload},
-    }
-})

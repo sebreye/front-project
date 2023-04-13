@@ -47,7 +47,9 @@ const HomePage = () => {
             <h1 className='title'>Loyal As Book</h1>
             <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ad, minima sunt at explicabo odit!</span>
             <p className="p2">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-            <button>Shop Now</button>
+            <button class="cssbuttons-io">
+            <span><p>ShopNow</p></span>
+</button>
             </div>
             <img src="https://cdn.discordapp.com/attachments/286906532476747786/1093872826596991086/citpark.PNG" alt="" />
         </SwiperSlide>
@@ -58,7 +60,9 @@ const HomePage = () => {
             <h1 className='title'>Loyal As Book</h1>
             <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ad, minima sunt at explicabo odit!</span>
             <p className="p2">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                <button>Shop Now</button>
+            <button class="cssbuttons-io">
+            <span><p>ShopNow</p></span>
+</button>
         </div>
 <img src="https://cdn.discordapp.com/attachments/286906532476747786/1093882523517456404/strategy.PNG" alt="" />
         </SwiperSlide>
@@ -69,7 +73,9 @@ const HomePage = () => {
             <h1 className='title'>Loyal As Book</h1>
             <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ad, minima sunt at explicabo odit!</span>
             <p className="p2">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-            <button>Shop Now</button>
+            <button class="cssbuttons-io">
+  <span><p>ShopNow</p></span>
+</button>
             </div>
                 <img src="https://cdn.discordapp.com/attachments/286906532476747786/1093882491003219998/book.PNG" alt="" />
         </SwiperSlide>
@@ -80,7 +86,9 @@ const HomePage = () => {
             <h1 className='title'>Loyal As Book</h1>
             <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ad, minima sunt at explicabo odit!</span>
             <p className="p2">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-            <button>Shop Now</button>
+            <button class="cssbuttons-io">
+            <span><p>ShopNow</p></span>
+</button>
             </div>
             <img src="https://cdn.discordapp.com/attachments/286906532476747786/1093882597588865085/keep.PNG" alt="" />
         </SwiperSlide>
