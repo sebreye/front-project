@@ -80,7 +80,7 @@ const Header = () => {
                 </div>
                 <div>
                 {favoriteBooks.map(favoriteBook => (
-        <div key={favoriteBook.id} className='flex'>
+        <div key={favoriteBook.id} className='flex justify-between'>
           <img src={favoriteBook.image_url} alt={favoriteBook.title} width={50} />
           <h3>{favoriteBook.title}</h3>
           <p>{favoriteBook.author}</p>
