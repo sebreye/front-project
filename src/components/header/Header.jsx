@@ -130,13 +130,13 @@ const tryLogin = () => {
                     <div className='flex flex-col w-3/4'>
                     <input value={mdp} type="password" onChange={(e) => setMdp(e.target.value)} className='w-full rounded-full' />
                     <button className="login_btn border mt-4
-                     rounded-full" onClick={() => {
+                        rounded-full" onClick={() => {
                         tryLogin();
                         
                     }
                         }>login</button>
                     </div>
-                    
+                    {login.users[0].email === email && login.users[0].mdp === mdp? <h1>Welcome</h1> :"" }
                     </div>
 
                 </div>
