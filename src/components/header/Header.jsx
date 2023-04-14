@@ -48,10 +48,6 @@ const Header = () => {
 const login = useSelector((state)=>state.login);
 const [email, setEmail] =useState('');
 const [mdp, setMdp] =useState('');
-
-const handleModal = () => {
-        dispatch(setModal(true))
-}
 const tryLogin = () => {
     let valid = false
     login.users.forEach(user => {
@@ -123,13 +119,26 @@ const tryLogin = () => {
                     <h3 className='text-2xl p-4 cursor-pointer hover:text-green-500 hover:underline'>Bookshelf Modern</h3>
                     <h3 className='text-2xl p-4 cursor-pointer hover:text-green-500 hover:underline'>Bookshelf Classic</h3>
                     <h3 className='text-2xl p-4 cursor-pointer hover:text-green-500 hover:underline'><Link href={"/allbooks"}>All Books</Link></h3>
-                    <input value={email} type="text" onChange={(e) => setEmail(e.target.value)} />
-                    <input value={mdp} type="password" onChange={(e) => setMdp(e.target.value)} />
-                    <button className="login_btn" onClick={() => {
+                    <div>
+                        <h1>
+                            email : 
+                        </h1>
+                    <input value={email} type="text" onChange={(e) => setEmail(e.target.value)} className='w-3/4 rounded-full' />
+                    <h1>
+                        mot de passe : 
+                    </h1>
+                    <div className='flex flex-col w-3/4'>
+                    <input value={mdp} type="password" onChange={(e) => setMdp(e.target.value)} className='w-full rounded-full' />
+                    <button className="login_btn border mt-4
+                     rounded-full" onClick={() => {
                         tryLogin();
                         
                     }
                         }>login</button>
+                    </div>
+                    
+                    </div>
+
                 </div>
             </div>
         </div>
