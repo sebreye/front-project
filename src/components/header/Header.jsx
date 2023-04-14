@@ -10,6 +10,7 @@ import { removeTask } from '@component/redux/reducers/bookslice'
 import { useRouter } from 'next/router'
 import {FaUserAlt} from 'react-icons/fa'
 import { toggleFavorite } from '@component/redux/reducers/bookslice'
+import { setConected, setUser } from '@component/redux/reducers/loginSlice'
 const Header = () => {
     const favoriteIds = useSelector(state => state.booklist.favorites);
     const books = useSelector(state => state.booklist.books);
@@ -43,6 +44,27 @@ const Header = () => {
     const [query, setQuery] = useState("")
     const router = useRouter();
     const showSearchBar = router.pathname !== '/allbooks';
+    
+const login = useSelector((state)=>state.login);
+const [email, setEmail] =useState('');
+const [mdp, setMdp] =useState('');
+
+const handleModal = () => {
+        dispatch(setModal(true))
+}
+const tryLogin = () => {
+    let valid = false
+    login.users.forEach(user => {
+    if (user.email === email && user.mdp === mdp) {
+        valid = true
+        dispatch(setConected(true))
+        dispatch(setUser(user))
+    }
+    });
+    if (!valid) {
+        alert('email ou mot de passe incorrect')
+    }
+}
   return (
     <>
         <div className='flex justify-between p-6 shadow-lg'>
@@ -101,6 +123,13 @@ const Header = () => {
                     <h3 className='text-2xl p-4 cursor-pointer hover:text-green-500 hover:underline'>Bookshelf Modern</h3>
                     <h3 className='text-2xl p-4 cursor-pointer hover:text-green-500 hover:underline'>Bookshelf Classic</h3>
                     <h3 className='text-2xl p-4 cursor-pointer hover:text-green-500 hover:underline'><Link href={"/allbooks"}>All Books</Link></h3>
+                    <input value={email} type="text" onChange={(e) => setEmail(e.target.value)} />
+                    <input value={mdp} type="password" onChange={(e) => setMdp(e.target.value)} />
+                    <button className="login_btn" onClick={() => {
+                        tryLogin();
+                        
+                    }
+                        }>login</button>
                 </div>
             </div>
         </div>

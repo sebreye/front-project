@@ -6,6 +6,7 @@ export const loginSlice = createSlice({
         email: '',
         password: '',
         isSubscribed: false,
+        connected:false, users:[{name:'Client', email:'client@client.com', mdp:'1234'}], connectedUser:{} 
     },
     reducers: {
     subscribe: (state, action) => {
@@ -13,7 +14,8 @@ export const loginSlice = createSlice({
         state.password = action.payload.password;
         state.isSubscribed = true;
         },
+        setConected:(state, action)=>{state.connected = action.payload},
+        setUser:(state, action)=>{state.connectedUser = action.payload},
     },
     });
-export const { subscribe } = loginSlice.actions;
-    
+export const { subscribe,setConected, setUser } = loginSlice.actions;
