@@ -275,6 +275,25 @@
   .number{
     display: none;
   }
+  .swiper-slide.swiper-slide-active{
+    flex-direction: column;
+  }
+
+  .swiper h1{
+    font-size: 15px;
+  }
+  .swiper span{
+    font-size: 11px;
+  }
+  .swiper p{
+    font-size: 11px;
+  }
+  .textcarou{
+    text-align: center;
+  }
+.txtcarou{
+    text-align: center;
+  }
   .info-sales{
     display: flex;
     flex-direction: column;
